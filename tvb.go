@@ -3,14 +3,13 @@ package main
 import (
 	"errors"
 	"io/ioutil"
-	"net/http"
 	"regexp"
 
 	"github.com/gin-gonic/gin"
 )
 
 func parseTVB(liveName string) (string, error) {
-	resp, err := http.Get("http://news.tvb.com/live/" + liveName)
+	resp, err := getHttpClient().Get("http://news.tvb.com/live/" + liveName)
 	if err != nil {
 		return "", err
 	}
@@ -32,6 +31,7 @@ func tvbHandler(liveName string, c *gin.Context) {
 	m3u8, err := parseTVB(liveName)
 	if err != nil {
 		c.AbortWithError(500, err)
+		return
 	}
 	if m3u8 == "" {
 		c.AbortWithError(404, errors.New("video not found"))
