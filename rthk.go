@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
@@ -34,7 +33,6 @@ func m3u8ProxyHandler(m3u8url string, c *gin.Context) {
 	}
 	bodyString := string(bodyBytes)
 	processedBody := m3u8Proc(bodyString, baseURL+"i.ts?url=")
-	fmt.Println(resp.Header.Get("Content-Type"))
 	c.Data(200, resp.Header.Get("Content-Type"), []byte(processedBody))
 }
 
