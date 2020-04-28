@@ -23,6 +23,7 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/i.ts", tsProxyHandler)
+	r.GET("/iptv.m3u", m3uHandler)
 	tvb := r.Group("/tvb")
 	{
 		tvb.GET("/inews.m3u8", iNewsHandler)
