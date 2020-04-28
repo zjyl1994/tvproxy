@@ -9,7 +9,7 @@ import (
 )
 
 func parseTVB(liveName string) (string, error) {
-	resp, err := getHttpClient().Get("http://news.tvb.com/live/" + liveName)
+	resp, err := getHTTPClient().Get("http://news.tvb.com/live/" + liveName)
 	if err != nil {
 		return "", err
 	}

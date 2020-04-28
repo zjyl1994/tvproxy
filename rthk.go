@@ -20,7 +20,7 @@ func rthk32Handler(c *gin.Context) {
 }
 
 func m3u8ProxyHandler(m3u8url string, c *gin.Context) {
-	resp, err := getHttpClient().Get(m3u8url)
+	resp, err := getHTTPClient().Get(m3u8url)
 	if err != nil {
 		c.AbortWithError(500, err)
 		return
@@ -36,7 +36,7 @@ func m3u8ProxyHandler(m3u8url string, c *gin.Context) {
 	c.Data(200, resp.Header.Get("Content-Type"), []byte(processedBody))
 }
 
-func m3u8Proc(data string, prefixUrl string) string {
+func m3u8Proc(data string, prefixURL string) string {
 	var sb strings.Builder
 	scanner := bufio.NewScanner(strings.NewReader(data))
 	for scanner.Scan() {
@@ -44,7 +44,7 @@ func m3u8Proc(data string, prefixUrl string) string {
 		if strings.HasPrefix(l, "#") {
 			sb.WriteString(l)
 		} else {
-			sb.WriteString(prefixUrl)
+			sb.WriteString(prefixURL)
 			sb.WriteString(url.QueryEscape(l))
 		}
 		sb.WriteString("\n")

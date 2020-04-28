@@ -5,8 +5,8 @@ import (
 )
 
 func tsProxyHandler(c *gin.Context) {
-	remoteUrl := c.Query("url")
-	resp, err := getHttpClient().Get(remoteUrl)
+	remoteURL := c.Query("url")
+	resp, err := getHTTPClient().Get(remoteURL)
 	if err != nil {
 		c.AbortWithError(500, err)
 		return
