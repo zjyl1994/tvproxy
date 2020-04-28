@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,7 @@ var baseURL string
 
 func main() {
 	// init
+	fmt.Println("TVProxy (https://github.com/zjyl1994/tvproxy)")
 	listenOn := os.Getenv("TVPROXY_LISTEN")
 	if listenOn == "" {
 		listenOn = "127.0.0.1:10086"

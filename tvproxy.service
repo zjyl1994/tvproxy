@@ -1,0 +1,10 @@
+[Unit]
+Description=IPTV Service
+[Service]
+Type=simple
+EnvironmentFile=/etc/tvproxy.env
+ExecStart=/usr/bin/tvproxy
+Restart=always
+RestartSec=30
+[Install]
+WantedBy=multi-user.target
